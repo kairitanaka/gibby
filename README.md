@@ -14,22 +14,22 @@ TL;DR of Gibbs Sampling
 
 Options 
 
--h –help\
+**-h –help\**
 Display below options
 
--i –input/
-fasta file from peak file(required)/
+-i –input\
+fasta file from peak file(required)\
 fasta file produced from peak file using bedtools
 
--g –genome /
-genome fasta (required)/
+-g –genome \
+genome fasta (required)\
 reference genome file 
 
--o –output /
-Output fasta (required) /
+-o –output \
+Output fasta (required) \
 Outputs a fasta file to that directory
 
--k –kmer/
+-k –kmer\
 Set k-mer length. Default is 12 
 
 -n –numberIter /
