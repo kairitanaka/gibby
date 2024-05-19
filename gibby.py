@@ -2,11 +2,11 @@ import sys
 import random
 from random import choices
 
-def gibbs_sampler(dna: list[str], k: int, t: int, n: int) -> list[str]:
+def gibbs_sampler(dna: list[str], k: int, n: int) -> list[str]:
     """Implements the GibbsSampling algorithm for motif finding."""
     best_motifs = []
     best_score = float('inf')
-    
+    t = len(dna)
     #what we are doing here: 
     #we want to initially randomly choose some kmers. We ignore a motif randomly. We find the profile of all the motifs except the ignored one and choose the best probability kmer 
     #from the ignored motif by randomly choosing based off of the probaility. Then do a score comparison then repeat
@@ -43,7 +43,8 @@ def randomKmers(dna: list[str], k: int) -> list:
             randomK.append(pattern)
     return randomK
 
-def chooseRandomKmerIndex(t) -> int:
+def chooseRandomKmerIndex(dna) -> int:
+    t = len(dna)
     index = random.randint(0,t-1) #choose a random index 
     return index
     pass
