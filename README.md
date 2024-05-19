@@ -14,7 +14,7 @@ TL;DR of Gibbs Sampling
 
 Options 
 
--h –help /
+-h –help\
 Display below options
 
 -i –input/
