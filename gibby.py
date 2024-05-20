@@ -2,16 +2,19 @@ import sys
 import random
 from random import choices
 
-def gibbs_sampler(dna: list[str], k: int, n: int) -> list[str]:
+def gibbs_sampler(dna: list[str], k: int, n: int) -> list[tuple[str, int]]:
     """Implements the GibbsSampling algorithm for motif finding."""
     best_motifs = []
     best_score = float('inf')
     t = len(dna)
+    all_motifs_scores = []
+
+
     #what we are doing here:
     #we want to initially randomly choose some kmers. We ignore a motif randomly. We find the profile of all the motifs except the ignored one and choose the best probability kmer
     #from the ignored motif by randomly choosing based off of the probaility. Then do a score comparison then repeat
 
-    for _ in range(1000):
+    for _ in range(5000):
         motifs = randomKmers(dna, k) # random Kmer Patterns and their start positions
         current_best_motifs = motifs[:] # copy motifs for intialization
         current_best_score = Score(current_best_motifs,k) # score the motifs and intialize the best score
@@ -26,13 +29,24 @@ def gibbs_sampler(dna: list[str], k: int, n: int) -> list[str]:
             chosenKmer = "".join(chosenKmer) #join because it comes out in list format
             current_best_motifs[ignoredKmerIndex] = chosenKmer #swap out the ignored motif with the chosenKmer
             score = Score(current_best_motifs,k)
+            all_motifs_scores.append((chosenKmer, score))
             if score < current_best_score: # score comparison
                 current_best_score = score #If the score is better replace current_best_score
             if score < best_score:
                 best_motifs = current_best_motifs[:] #replace best as well for both. Leave this because it is the final answer
                 best_score = score
-    return best_motifs
-    pass
+
+    all_motifs_scores.sort(key=getScore)
+    unique_motifs = []
+    seen_motifs = set()
+    for motif, score in all_motifs_scores:
+        if motif not in seen_motifs:
+            seen_motifs.add(motif)
+            unique_motifs.append((motif, score))
+            if len(unique_motifs) == 3:
+                break
+
+    return unique_motifs
 
 def randomKmers(dna: list[str], k: int) -> list:
     randomK = []
@@ -91,3 +105,6 @@ def Score (mostProbable: list, k: int):
         sumList.append(indexScore)
     return sum(sumList) #sum it all up
     pass
+
+def getScore(motif_score_pair: tuple) -> int:
+    return motif_score_pair[1]
