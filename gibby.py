@@ -14,7 +14,7 @@ def gibbs_sampler(dna: list[str], k: int, n: int) -> list[tuple[str, int]]:
     #we want to initially randomly choose some kmers. We ignore a motif randomly. We find the profile of all the motifs except the ignored one and choose the best probability kmer
     #from the ignored motif by randomly choosing based off of the probaility. Then do a score comparison then repeat
 
-    for _ in range(5000):
+    for _ in range(1000):
         motifs = randomKmers(dna, k) # random Kmer Patterns and their start positions
         current_best_motifs = motifs[:] # copy motifs for intialization
         current_best_score = Score(current_best_motifs,k) # score the motifs and intialize the best score
