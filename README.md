@@ -26,6 +26,11 @@ You can install the package via pip:
 ```
 pip install git+https://github.com/kairitanaka/CSE_185_finalProject.git
 ```
+Once you run it it will be helpful to run:
+```
+gibby_motifFinding -h
+```
+for all the options
 
 
 ## Usage
