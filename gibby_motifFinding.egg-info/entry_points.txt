@@ -1,0 +1,2 @@
+[console_scripts]
+gibby_run = mypackage.gibby_run:main

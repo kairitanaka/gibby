@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: gibby-motifFinding
+Version: 0.9
+Summary: Process genomic data to extract peak sequences and compute PWMs.
+Home-page: https://github.com/kairitanaka/CSE_185_finalProject
+Author: Joe Hwang, Kairi Tanaka
+Author-email: j8hwang@ucsd.edu, ktanaka@ucsd.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: biopython
+Requires-Dist: numpy
+Requires-Dist: seqlogo
+
+# MyPackage
+
+gibby_run is a Python package that processes genomic data to extract peak sequences and compute Position Weight Matrices (PWMs). This tool can be used for motif finding and other genomic analyses.
+
+## Features
+
+- Extract peak sequences from genomic data
+- Compute Position Weight Matrices (PWMs)
+- Run Gibbs Sampling for motif finding
+
+## Installation
+
+You can install the package via pip:
+
+```sh
+pip install gibby_run
+

@@ -1,0 +1,10 @@
+README.md
+setup.py
+gibby_motifFinding/__init__.py
+gibby_motifFinding/gibby_run.py
+gibby_motifFinding.egg-info/PKG-INFO
+gibby_motifFinding.egg-info/SOURCES.txt
+gibby_motifFinding.egg-info/dependency_links.txt
+gibby_motifFinding.egg-info/entry_points.txt
+gibby_motifFinding.egg-info/requires.txt
+gibby_motifFinding.egg-info/top_level.txt
