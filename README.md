@@ -1,9 +1,9 @@
 ## What is Gibbs Sampling?
 Gibbs Sampling is a statistical method used to estimate the distribution of variables when direct sampling is difficult. It is particularly useful in motif finding where we want to identify common patterns (motifs) in a set of sequences. 
-![image](https://www.google.com/url?sa=i&url=https%3A%2F%2Ftowardsdatascience.com%2Fgibbs-sampling-explained-b271f332ed8d&psig=AOvVaw1aTC8eX3ElQLXHswyB7FV3&ust=1716742597636000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDpg9eiqYYDFQAAAAAdAAAAABA_)
+![gibbs](https://github.com/kairitanaka/CSE_185_finalProject/assets/64274901/4d090d70-eebb-4224-9396-825bc4142684)
+
 # For example ...
 Imagine you are trying to perfect a secret recipe, but you don't have all the ingredients at once. You start by randomly choosing some ingredients and proportions, then you taste the result. Based on how good or bad it tastes, you keep some ingredients, change others, and try again. Each iteration helps you understand what works and what doesn't, gradually leading you to the best recipe.
-![gibbs](https://github.com/kairitanaka/CSE_185_finalProject/assets/64274901/4d090d70-eebb-4224-9396-825bc4142684)
 
 In the context of genomic sequences, Gibbs Sampling helps us identify common patterns (motifs) by iteratively refining our guesses based on the sequences we have. Each iteration, which involves some randomness, helps to gradually reveal the underlying motifs more accurately.
 
