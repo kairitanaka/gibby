@@ -1,6 +1,7 @@
 ## What is Gibbs Sampling?
 Gibbs Sampling is a statistical method used to estimate the distribution of variables when direct sampling is difficult. It is particularly useful in motif finding where we want to identify common patterns (motifs) in a set of sequences. 
-![gibbs](https://github.com/kairitanaka/CSE_185_finalProject/assets/64274901/4d090d70-eebb-4224-9396-825bc4142684)
+![image](https://github.com/kairitanaka/CSE_185_finalProject/assets/64274901/88f8a00e-0649-4410-8d52-a711428b82d2)
+
 
 # For example ...
 Imagine you are trying to perfect a secret recipe, but you don't have all the ingredients at once. You start by randomly choosing some ingredients and proportions, then you taste the result. Based on how good or bad it tastes, you keep some ingredients, change others, and try again. Each iteration helps you understand what works and what doesn't, gradually leading you to the best recipe.
