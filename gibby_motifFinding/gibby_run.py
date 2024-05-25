@@ -4,6 +4,7 @@ import numpy as np
 import seqlogo
 import os
 import argparse
+from . import gibbs
 
 # Function to parse BED files
 def parse_bed_file(peak_file, score_threshold):
