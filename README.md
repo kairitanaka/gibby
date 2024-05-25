@@ -1,3 +1,11 @@
+## What is Gibbs Sampling?
+Gibbs Sampling is a statistical method used to estimate the distribution of variables when direct sampling is difficult. It is particularly useful in motif finding where we want to identify common patterns (motifs) in a set of sequences. So for example, imagine you are trying to perfect a secret recipe, but you don't have all the ingredients at once. You start by randomly choosing some ingredients and proportions, then you taste the result. Based on how good or bad it tastes, you keep some ingredients, change others, and try again. Each iteration helps you understand what works and what doesn't, gradually leading you to the best recipe.
+
+In the context of genomic sequences, Gibbs Sampling helps us identify common patterns (motifs) by iteratively refining our guesses based on the sequences we have. Each iteration, which involves some randomness, helps to gradually reveal the underlying motifs more accurately.
+
+More images and text to come explaining gibbs ... 
+
+
 # gibby_motifFinding
 
 `gibby_run` is a Python package designed to process genomic data, extract peak sequences, and compute Position Weight Matrices (PWMs). This tool is particularly useful for motif finding and other genomic analyses.
