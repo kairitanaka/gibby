@@ -4,7 +4,6 @@ from . import gibbs
 from random import choices
 from collections import Counter
 import argparse
-from . import gibbs 
 from Bio import SeqIO
 import numpy as np
 import seqlogo
