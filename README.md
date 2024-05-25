@@ -8,7 +8,10 @@ More images and text to come explaining gibbs ...
 
 # gibby_motifFinding
 
-`gibby_run` is a Python package designed to process genomic data, extract peak sequences, and compute Position Weight Matrices (PWMs). This tool is particularly useful for motif finding and other genomic analyses.
+`gibby_run` is a Python package designed to process genomic data, extract peak sequences, compute Position Weight Matrices (PWMs), and compare scores in order to converge to the best pattern. This tool is particularly useful for motif finding and other genomic analyses.
+
+## Input 
+It takes a HOMER peaks.txt or a bed peak file. The output will be a motif logo in the directory you run it in!
 
 ## Features
 
@@ -21,16 +24,16 @@ More images and text to come explaining gibbs ...
 You can install the package via pip:
 
 ```
-python gibby_run.py -b bed_file -g genome_fasta_file -s score_threshold -i iterations -k kmer_size
+pip install git+https://github.com/kairitanaka/CSE_185_finalProject.git
 ```
 
 
 ## Usage
 
-The `gibby_run` script processes genomic data to extract peak sequences and compute PWMs using Gibbs sampling. The script can be run with the following command:
+The `gibby_motifFinding` script processes genomic data to extract peak sequences and compute PWMs using Gibbs sampling. The script can be run with the following command:
 
 ```
-python gibby_run.py -b bed_file -g genome_fasta_file -s score_threshold -i iterations -k kmer_size
+gibby_motifFinding -b bed_file -g genome_fasta_file -s score_threshold -i iterations -k kmer_size
 ```
 
 
