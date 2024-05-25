@@ -2,12 +2,6 @@ import sys
 import random
 from . import gibbs
 from random import choices
-from collections import Counter
-import argparse
-from Bio import SeqIO
-import numpy as np
-import seqlogo
-import os
 
 def gibbs_sampler(dna: list[str], k: int, n: int) -> list[tuple[str, int]]:
     """Implements the GibbsSampling algorithm for motif finding."""
