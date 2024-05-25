@@ -1,4 +1,3 @@
-import gibbs
 from Bio import SeqIO
 import numpy as np
 import seqlogo
@@ -6,6 +5,7 @@ import os
 import argparse
 import sys
 import random
+import argparse
 from random import choices
 
 def gibbs_sampler(dna: list[str], k: int, n: int) -> list[tuple[str, int]]:
@@ -196,7 +196,7 @@ def main():
 
     parse_bed_file(args.bed_file, args.score_threshold)
 
-    foo = gibbs.gibbs_sampler(dna, args.kmer_size, args.iterations)
+    foo = gibbs_sampler(dna, args.kmer_size, args.iterations)
     print("Gibbs Sampler Output: \n", foo)
 
     freq = find_background_freq(foo)
