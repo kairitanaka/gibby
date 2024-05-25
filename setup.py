@@ -11,7 +11,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'gibby_motifFinding = gibby_run.gibby_motifFinding:main'
+            'gibby_motifFinding = gibby_run.gibby_run:main'
         ]
     },
     author='Kairi',
@@ -27,3 +27,4 @@ setup(
     ],
     python_requires='>=3.6',
 )
+
