@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='your_package_name',
+    name='gibby_run',
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
@@ -14,8 +14,8 @@ setup(
             'gibby_motifFinding = your_package.gibby_motifFinding:main'
         ]
     },
-    author='Your Name',
-    author_email='your.email@example.com',
+    author='Kairi',
+    author_email='ktanaka@ucsd.edu',
     description='A package for genomic motif finding.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
