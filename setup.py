@@ -7,7 +7,8 @@ setup(
     install_requires=[
         'biopython',
         'numpy',
-        'seqlogo'
+        'seqlogo',
+        'tqdm'
     ],
     entry_points={
         'console_scripts': [
