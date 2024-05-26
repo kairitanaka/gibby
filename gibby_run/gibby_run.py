@@ -5,91 +5,47 @@ import seqlogo
 import os
 import random
 from random import choices
-from tqdm.auto import tqdm
-import threading
-import time
-import sys
-
-# Custom error class to handle exceptions
-class CustomError(Exception):
-    pass
 
 # Function to parse BED files
-def parse_bed_file(peak_file, file_type, score_threshold):
-    try:
-        peaks = []
-        # Parse BED file
-        if file_type == "bed":
-            with open(peak_file, 'r') as f:
-                for line in f:
-                    if line.startswith("#"):
-                        continue
-                    fields = line.strip().split('\t')
-                    chrom = fields[0]
-                    start = int(fields[1])
-                    end = int(fields[2])
-                    score = float(fields[4])
-                    if score > score_threshold:
-                        peaks.append((chrom, start, end, score))
-            return peaks
-        # Parse HOMER file
-        elif file_type == "homer":
-            with open(peak_file, 'r') as f:
-                for line in f:
-                    if line.startswith("#"):
-                        continue
-                    fields = line.strip().split('\t')
-                    chrom = fields[1]
-                    start = int(fields[2])
-                    end = int(fields[3])
-                    score = float(fields[8])
-                    if score > score_threshold:
-                        peaks.append((chrom, start, end, score))
-        # Raise error if file type is not 'bed' or 'homer'
-        else:
-            raise CustomError("Invalid file type. Please specify 'bed' or 'homer'.")
-    except Exception as e:
-        raise CustomError(f"\n ERROR PARSING FILE: {str(e)}")
+def parse_bed_file(peak_file, score_threshold):
+    peaks = []
+    with open(peak_file, 'r') as f:
+        for line in f:
+            if line.startswith("#"):
+                continue
+            fields = line.strip().split('\t')
+            chrom = fields[1]
+            start = int(fields[2])
+            end = int(fields[3])
+            score = float(fields[8])
+            if score > score_threshold:
+                peaks.append((chrom, start, end, score))
     return peaks
 
 # Organizes the genome fasta file by chromosome so that we can later find sequences more quickly; MUCH FASTER
 def get_genome_info(fasta_file):
-    try:
-        genome_info = {}
-        for record in SeqIO.parse(fasta_file, "fasta"):
-            genome_info[record.id] = record.seq
-        return genome_info
-    except Exception as e:
-        raise CustomError(f"\n ERROR READING GENOME FASTA FILE: {str(e)}")
+    genome_info = {}
+    for record in SeqIO.parse(fasta_file, "fasta"):
+        genome_info[record.id] = record.seq
+    return genome_info
 
-# Extract sequence from organized genome fasta file based on peak coordinates.
+# Extract sequence from organized genome fasta file based on peak coordinates; FAST
 def extract_sequence(chrom, start, end, genome_info):
-    try:
-        return str(genome_info[chrom][start:end])
-    except Exception as e:
-        raise CustomError(f"\n ERROR EXTRACTING SEQUENCE: {str(e)}")
+    return str(genome_info[chrom][start:end])
 
 # Get peak sequences
-def get_peak_sequences(bed_file, file_type, genome_fasta_file, score_threshold=None):
-    try:
-        if file_type == "bed" and score_threshold is None:
-            score_threshold = 999 # Default score threshold for BED files
-        elif file_type == "homer" and score_threshold is None:
-            score_threshold = 60 # Default score threshold for HOMER files
-        peaks = parse_bed_file(bed_file, file_type, score_threshold)  # Get peak coordinates
-        genome_info = get_genome_info(genome_fasta_file)  # Organize genome fasta file for fast sequence extraction
-        sequences = []  # Store peak sequences
-        for peak in peaks:  # Extract sequences for each peak
-            chrom, start, end, score = peak  # Unpack peak coordinates and score
-            sequence = extract_sequence(chrom, start, end, genome_info)  # Extract sequence
-            sequences.append(sequence.upper())  # Store sequence
-        return sequences  # Return all sequences
-    except Exception as e: # Catch any exceptions
-        print(f"{e}")
+def get_peak_sequences(bed_file, genome_fasta_file, score_threshold):
+    peaks = parse_bed_file(bed_file, score_threshold)  # Get peak coordinates
+    genome_info = get_genome_info(genome_fasta_file)  # Organize genome fasta file for fast sequence extraction
+    sequences = []  # Store peak sequences
+    for peak in peaks:  # Extract sequences for each peak
+        chrom, start, end, score = peak  # Unpack peak coordinates and score
+        sequence = extract_sequence(chrom, start, end, genome_info)  # Extract sequence
+        sequences.append(sequence.upper())  # Store sequence
+    return sequences  # Return all sequences
 
 nucs = {"A": 0, "C": 1, "G": 2, "T": 3}
 
-# Get Position Frequency Matrix
 def GetPFM(sequences):
     pfm = np.zeros((4, len(sequences[0])))
     for sequence in sequences:
@@ -104,33 +60,36 @@ def GetPFM(sequences):
                 pfm[nucs['G'], i] += 1
     return pfm
 
-# Get Position Weight Matrix
-def GetPWM(binding_sites):
+def find_background_freq(sequences):
+    total = 0
+    frequencies = {"A": 0, "C": 0, "G": 0, "T": 0}
+    for sequence in sequences:
+        for nucleotide in sequence:
+            frequencies[nucleotide] += 1
+            total += 1
+    return {nucleotide: round(frequency / total, 2) for nucleotide, frequency in frequencies.items()}
+
+def GetPWM(binding_sites, background_freqs=[0.25, 0.25, 0.25, 0.25]):
     pwm = np.zeros((4, len(binding_sites[0])))
     pfm = GetPFM(binding_sites)
     pfm = pfm + 0.01  # Add pseudocount. Don’t change this!
     for i in range(len(pfm)):
         for j in range(len(pfm[i])):
-            pwm[i, j] = np.log2((pfm[i, j] / np.sum(pfm[:, j])) / 0.25)
+            pwm[i, j] = np.log2((pfm[i, j] / np.sum(pfm[:, j])) / background_freqs[i])
     return pwm
 
-# Gibbs Sampling Algorithm
 def gibbs_sampler(dna, k, n):
     """Implements the GibbsSampling algorithm for motif finding."""
-    if k is None: 
-        k = 20 # default kmer size
-    if n is None:
-        n = 500 # default number of iterations
     best_motifs = []
     best_score = float('inf')
     t = len(dna)
     all_motifs_scores = []
 
-    for i in tqdm(range(1000)):
+    for _ in range(1000):
         motifs = randomKmers(dna, k)  # random Kmer Patterns and their start positions
         current_best_motifs = motifs[:]  # copy motifs for initialization
         current_best_score = Score(current_best_motifs, k)  # score the motifs and initialize the best score
-        for j in range(n):
+        for _ in range(n):
             ignoredKmerIndex = chooseRandomKmerIndex(dna)  # choose random i
             profile = Profile(current_best_motifs[:ignoredKmerIndex] + current_best_motifs[ignoredKmerIndex + 1:], k)  # make a profile from the kmers excluding the ignored Kmer
             motifProbability = Motifs(profile, dna[ignoredKmerIndex], k)  # find motif probability from the ignoredDNA
@@ -146,6 +105,7 @@ def gibbs_sampler(dna, k, n):
             if score < best_score:
                 best_motifs = current_best_motifs[:]  # replace best as well for both. Leave this because it is the final answer
                 best_score = score
+
     return best_motifs
 
 def randomKmers(dna, k):
@@ -202,80 +162,39 @@ def Score(mostProbable, k):
     return sum(sumList)  # sum it all up
 
 def main():
-    parser = argparse.ArgumentParser(description="Gibby (ver 1.0.0) utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome. \n"
-                                    "The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), and a motif logo based on these matrices. \n")
-    parser.add_argument('-f', '--peak_file', type=str, required=True, help="Input BED/Homer file with peak information.")
-    parser.add_argument('-t', '--peak_file_type', type=str, required=True, help="File type: 'bed' or 'homer' file.")
+    parser = argparse.ArgumentParser(description="Process genomic data to extract peak sequences and compute PWMs.\n"
+                                                "Usage: python gibby_run.py -b bed_file -g genome_fasta_file -s score_threshold -i iterations -k kmer_size")
+    parser.add_argument('-b', '--bed_file', type=str, required=True, help="Input BED file with peak information.")
     parser.add_argument('-g', '--genome_fasta_file', type=str, required=True, help="Genome FASTA file.")
-    parser.add_argument('-s', '--score_threshold', type=float, required=False, default=None, help="Score threshold for filtering peaks.")
-    parser.add_argument('-k', '--kmer_size', type=int, required=False, default=20, help="Size of k-mers for motif finding.")
-    parser.add_argument('-i', '--iterations', type=int, required=False, default=500, help="Number of iterations for Gibbs sampler.")
+    parser.add_argument('-s', '--score_threshold', type=float, required=True, help="Score threshold for filtering peaks.")
+    parser.add_argument('-k', '--kmer_size', type=int, required=True, help="Size of k-mers for motif finding.")
+    parser.add_argument('-i', '--iterations', type=int, required=True, help="Number of iterations for Gibbs sampler.")
+
     args = parser.parse_args()
-    
-    # Add homebrew path to PATH
+
+    dna = get_peak_sequences(args.bed_file, args.genome_fasta_file, args.score_threshold)
+
+    parse_bed_file(args.bed_file, args.score_threshold)
+
+    foo = gibbs_sampler(dna, args.kmer_size, args.iterations)
+    print("Gibbs Sampler Output: \n", foo)
+
+    freq = find_background_freq(foo)
+    print("Background Frequencies: \n", freq)
+
+    pfm = GetPFM(foo)
+    print("Position Frequency Matrix: \n", pfm)
+
+    pwm = GetPWM(foo)
+    print("Position Weight Matrix: \n", pwm)
+
     os.environ['PATH'] = '/opt/homebrew/bin:' + os.environ['PATH']
 
-    # Function to write matrix to file
-    def write_matrix_to_file(array, filename):
-        np.savetxt(filename, array, fmt='%s')
-
-    # Function to display loading dots animation
-    def loading_dots():
-        while not stop_loading:
-            for i in range(4):
-                if stop_loading:
-                    break
-                print(f'\rLoading peak sequences{"." * i}{" " * (3 - i)}', end='')
-                time.sleep(0.5)
-
-    # Main code
-    try:
-        stop_loading = False 
-        loading_thread = threading.Thread(target=loading_dots)
-        loading_thread.start()
-        # Get peak sequences
-        dna = get_peak_sequences(args.peak_file, args.peak_file_type, args.genome_fasta_file, args.score_threshold)
-        stop_loading = True
-        loading_thread.join()
-    except CustomError as e:
-        print(f"Error: {str(e)}")
-        stop_loading = True
-        loading_thread.join()
-        sys.exit(1)
-    
-    if dna is None:
-        print("Failure to find peak sequences. Exiting...")
-        sys.exit(1)
-
-    print("\n", len(dna), "peak sequences loaded. \n")
-    print("Now running gibbs sampler...")
-
-    # Run Gibbs Sampler
-    foo = gibbs_sampler(dna[:100], args.kmer_size, args.iterations)
-
-    print("Finished! \n")
-    print("Writing potential binding motif to potential_motifs.txt...")
-
-    # Write potential motifs to file
-    write_matrix_to_file(foo, 'gibbs_potential_bind.txt')
-
-    print("Done! \n")
-
-    # Generate PFM, PWM, and motif logo
-    pfm = GetPFM(foo)
-    print("Writing position frequency matrix to PFM.txt...")
-    write_matrix_to_file(pfm, 'PFM.txt')
-    print("Done! \n")
-    pwm = GetPWM(foo)
-    print("Writing position weight matrix to PWM.txt...")
-    write_matrix_to_file(pwm, 'PWM.txt')
-    print("Done! \n")
-    print("Generating motif logo...")
     seq_pwm = seqlogo.Pwm(pwm)
     seq_ppm = seqlogo.Ppm(seqlogo.pwm2ppm(seq_pwm))
-    seqlogo.seqlogo(seq_ppm, ic_scale=False, format='png', size='large', filename='motif.png')
+    seqlogo.seqlogo(seq_ppm, ic_scale=False, format='png', size='large', filename='output_logo.png')
 
-    print("Successfully loaded and saved motif logo to output_logo.png\n")
+    print("Loaded and saved motif logo")
 
 if __name__ == "__main__":
     main()
