@@ -203,14 +203,14 @@ def Score(mostProbable, k):
 
 def main():
     ascii_art = r"""
-   _____ _ _     _             __  __       _   _  __   ______ _           _           
-  / ____(_) |   | |           |  \/  |     | | (_)/ _| |  ____(_)         | |          
- | |  __ _| |__ | |__  _   _  | \  / | ___ | |_ _| |_  | |__   _ _ __   __| | ___ _ __ 
- | | |_ | | '_ \| '_ \| | | | | |\/| |/ _ \| __| |  _| |  __| | | '_ \ / _` |/ _ \ '__|
- | |__| | | |_) | |_) | |_| | | |  | | (_) | |_| | |   | |    | | | | | (_| |  __/ |   
-  \_____|_|_.__/|_.__/ \__, | |_|  |_|\___/ \__|_|_|   |_|    |_|_| |_|\__,_|\___|_|   
-                        __/ |                                                          
-                       |___/                                                           
+   _____   _   _       _             
+  / ____| (_) | |     | |            
+ | |  __   _  | |__   | |__    _   _ 
+ | | |_ | | | | '_ \  | '_ \  | | | |
+ | |__| | | | | |_) | | |_) | | |_| |
+  \_____| |_| |_.__/  |_.__/   \__, |
+                                __/ |
+                               |___/            
     """
     explanation = ("\n Gibby (ver 0.1.0) utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome.\n"
                    "The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), \n"
