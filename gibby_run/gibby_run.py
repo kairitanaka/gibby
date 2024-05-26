@@ -260,7 +260,8 @@ def main():
         print("Failure to find peak sequences. Exiting...")
         sys.exit(1)
 
-    print("\n", len(dna), "peak sequences loaded. \n")
+    print("\n")
+    print(len(dna), "peak sequences loaded. \n")
     print("Now running gibbs sampler...")
 
     # Run Gibbs Sampler
