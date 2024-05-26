@@ -42,7 +42,7 @@ gibby_motifFinding -h
 ```
 If you get an error that the command is not found, make sure the directory ~/.local/bin is included in your $PATH environment variable. Or consider adding the directory to your `$PATH` by running:
 ```
-export PATH=$PATH:$HOME/local/bin
+export PATH=$PATH:$HOME/.local/bin
 ```
 This will allow you to simply type `gibby_motifFinding` to run the tool.
 
