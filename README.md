@@ -44,7 +44,7 @@ If you get an error that the command is not found, make sure the directory ~/.lo
 ```
 export PATH=$PATH:$HOME/.local/bin
 ```
-This will allow you to simply type `gibby_motifFinding` to run the tool.
+This will allow you to simply type `gibby_motifFinding` to run the tool. You will have to repeat this for every new terminal session.
 
 # Usage
 
