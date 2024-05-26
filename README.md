@@ -79,7 +79,7 @@ Please take a look at the "Usage" section above to get a good idea of what the t
 In this case, we have a HOMER peak file. In addition, suppose we want to choose 75 as the score threshold to filter out low-quality peaks. Running the tool would look like this: 
 
 ```
-python gibby_run.py -f peaks.txt -t homer -g GRCm38.fa -s 75
+gibby_motifFinding -f ~/lab5/tagdirs/Oct4/peaks.txt -t homer -g ~/public/genomes/GRCm38.fa -s 75
 ```
 
 You will want to make sure that you have the correct paths for the peak file and the genome file. Running the command, the tool will take some time to fully run. After finishing, you will want to take a look at the generated motif logo which visualizes which motif was most conserved among the peak regions. In our case, we got: 
