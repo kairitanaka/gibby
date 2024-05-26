@@ -212,8 +212,8 @@ def main():
                                 __/ |
                                |___/            
     """
-    explanation = ("\n Gibby (ver 0.1.0) utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome.\n"
-                   "The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), \n"
+    explanation = ("\n Gibby (ver 0.1.0) utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome."
+                   "The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM),"
                    "and a motif logo based on these matrices. \n")
     
     parser = argparse.ArgumentParser(description=ascii_art + explanation, formatter_class=argparse.RawTextHelpFormatter)
