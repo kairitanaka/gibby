@@ -23,9 +23,6 @@ Three files are generated: `PFM.txt`, `PWM.txt`, and `motif.png`. These files in
 
 ## What is Gibbs Sampling?
 Gibbs Sampling is a statistical method used to estimate the distribution of variables when direct sampling is difficult. It is particularly useful in motif finding where we want to identify common patterns (motifs) in a set of sequences. 
-<p align="center">
-  <img src="https://github.com/kairitanaka/CSE_185_finalProject/assets/64274901/e9ca348f-9c26-45b7-b3d9-da83b10b6a41" alt="gibbs">
-</p>
 
 ### For example ...
 Imagine you are trying to perfect a secret recipe, but you don't have all the ingredients at once. You start by randomly choosing some ingredients and proportions, then you taste the result. Based on how good or bad it tastes, you keep some ingredients, change others, and try again. Each iteration helps you understand what works and what doesn't, gradually leading you to the best recipe.
