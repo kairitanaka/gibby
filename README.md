@@ -33,12 +33,16 @@ Imagine you are trying to perfect a secret recipe, but you don't have all the in
 In the context of genomic sequences, Gibbs Sampling helps us identify common patterns (motifs) by iteratively refining our guesses based on the sequences we have. Each iteration, which involves some randomness, helps to gradually reveal the underlying motifs more accurately.
 
 ### Process for Gibbs Sampling
-The problem we are trying to solve here is:
+
+**The problem we are trying to solve here is:**
 Given 'S' sequences, find the most mutually similar subsequences of length 'k' from each sequence
 
-# TL;DR: A short explanation of Gibbs Sampling
+In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the opimal or somewhere extremely close to the optimum. 
 
-Watch this [video](https://www.youtube.com/watch?v=MP6O_Z2AUDU) from our beloved professor from UCSD Dr.Pavel 
+# TL;DR: A short explanation of Gibbs Sampling
+Steps for Gibbs Sampling:
+
+Another resource you can use is this [video](https://www.youtube.com/watch?v=MP6O_Z2AUDU) from our beloved professor from UCSD,  Dr.Pavel. 
 
 # Features
 
