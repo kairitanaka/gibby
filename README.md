@@ -52,6 +52,7 @@ You can install the package via pip:
 ```
 pip install git+https://github.com/kairitanaka/gibby.git
 ```
+and verify by running:
 ```
 gibby -h
 ```
