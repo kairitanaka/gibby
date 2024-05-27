@@ -65,8 +65,8 @@ If you come across the error:
 ```
 error: cannot find command 'git'
 ```
-
-Please make sure to download git! Please check [here](https://github.com/git-guides/install-git) for troubleshooting. 
+```
+Please make sure to install Git. You can find installation instructions [here](https://github.com/git-guides/install-git).
 
 
 # Usage
