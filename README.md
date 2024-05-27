@@ -36,7 +36,7 @@ In the context of genomic sequences, Gibbs Sampling helps us identify common pat
 The problem we are trying to solve here is:
 Given 'S' sequences, find the most mutually similar subsequences of length 'k' from each sequence
 
-## TL;DR: A short explanation of Gibbs Sampling
+# TL;DR: A short explanation of Gibbs Sampling
 
 # Features
 
