@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='gibby_run',
+    name='gibby',
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
@@ -12,10 +12,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'gibby_motifFinding = gibby_run.gibby_run:main'
+            'gibby = gibby.gibby:main'
         ]
     },
-    author='Kairi',
+    author='Kairi Tanaka, Joseph Hwang',
     author_email='ktanaka@ucsd.edu',
     description='A package for genomic motif finding.',
     long_description=open('README.md').read(),
