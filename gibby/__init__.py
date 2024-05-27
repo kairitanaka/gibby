@@ -1,2 +1,2 @@
-from .gibby_run import main
+from .gibby import main
 
