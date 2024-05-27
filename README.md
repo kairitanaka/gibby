@@ -1,5 +1,7 @@
 # Gibby (ver 0.1.0)
 
+`Gibby` is a Python package designed to process genomic data, extract peak sequences, compute positional frequency and weight matrices (PFMs, PWMs), and compare scores based on the PWM in order to converge on the best motif. This tool is particularly for motif finding.
+
 - [Input](#input)
 - [Output](#output)
 - [Visuals](#visuals)
@@ -8,8 +10,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-
-`Gibby` is a Python package designed to process genomic data, extract peak sequences, compute positional frequency and weight matrices (PFMs, PWMs), and compare scores based on the PWM in order to converge on the best motif. This tool is particularly for motif finding.
 
 ## Input 
 `Gibby` can take HOMER `peaks.txt` files and `.bed` files as input.
