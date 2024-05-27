@@ -203,6 +203,9 @@ def Score(mostProbable, k):
         sumList.append(indexScore)
     return sum(sumList)  # sum it all up
 
+def log_message(message):
+    print(message)
+
 def main():
     ascii_art = r"""
    _____   _   _       _             
