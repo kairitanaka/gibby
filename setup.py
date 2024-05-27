@@ -22,7 +22,7 @@ setup(
     description='A package for genomic motif finding.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/kairitanaka/CSE_185_finalProject',
+    url='https://github.com/kairitanaka/gibby',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
@@ -30,6 +30,3 @@ setup(
     ],
     python_requires='>=3.6',
 )
-
-
-
