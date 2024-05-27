@@ -1,4 +1,14 @@
 # Gibby (ver 0.1.0)
+
+- [Input](#input)
+- [Output](#output)
+- [Visuals](#visuals)
+- [What is Gibbs Sampling?](#what-is-gibbs-sampling)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+
 `Gibby` is a Python package designed to process genomic data, extract peak sequences, compute positional frequency and weight matrices (PFMs, PWMs), and compare scores based on the PWM in order to converge on the best motif. This tool is particularly for motif finding.
 
 ## Input 
