@@ -8,7 +8,9 @@ setup(
         'biopython',
         'numpy',
         'seqlogo',
-        'tqdm'
+        'tqdm',
+        'termcolor',
+        'pyfiglet'
     ],
     entry_points={
         'console_scripts': [
