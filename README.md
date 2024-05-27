@@ -36,6 +36,8 @@ Given `S` sequences, find the most mutually similar subsequences of length `k` f
 
 In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the opimal or somewhere extremely close to the optimum. 
 
+more coming ... 
+
 # TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
 
