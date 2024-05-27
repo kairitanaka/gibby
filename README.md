@@ -52,6 +52,7 @@ You can install the package via pip:
 ```
 pip install git+https://github.com/kairitanaka/gibby.git
 ```
+```
 gibby -h
 ```
 If you get an error that the command is not found, make sure the directory ~/.local/bin is included in your $PATH environment variable. Or consider adding the directory to your `$PATH` by running:
@@ -61,8 +62,6 @@ export PATH=$PATH:$HOME/.local/bin
 This will allow you to simply type `gibby` to run the tool. You will have to repeat this for every new terminal session.
 
 If you come across the error:
-
-
 ```
 error: cannot find command 'git'
 ```
