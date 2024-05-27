@@ -38,23 +38,23 @@ pip install git+https://github.com/kairitanaka/CSE_185_finalProject.git
 ```
 To check if installation was successful, run:
 ```
-gibby_motifFinding -h
+gibby -h
 ```
 If you get an error that the command is not found, make sure the directory ~/.local/bin is included in your $PATH environment variable. Or consider adding the directory to your `$PATH` by running:
 ```
 export PATH=$PATH:$HOME/.local/bin
 ```
-This will allow you to simply type `gibby_motifFinding` to run the tool. You will have to repeat this for every new terminal session.
+This will allow you to simply type `gibby` to run the tool. You will have to repeat this for every new terminal session.
 
 # Usage
 
-`gibby_motifFinding`, from Gibby (ver 0.1.0), utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome. The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), and a motif logo based on these matrices. The options appear as below:
+`gibby`, from Gibby (ver 0.1.0), utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome. The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), and a motif logo based on these matrices. The options appear as below:
 
 ```
-gibby_motifFinding [-h] -p PEAK_FILE -t PEAK_FILE_TYPE -g GENOME_FASTA_FILE [-s SCORE_THRESHOLD] [-k KMER_SIZE] [-i ITERATIONS]
+gibby [-h] -p PEAK_FILE -t PEAK_FILE_TYPE -g GENOME_FASTA_FILE [-s SCORE_THRESHOLD] [-k KMER_SIZE] [-i ITERATIONS]
 ```
 ### Required arguments
-Assuming you have successfully installed Gibby, running the tool is a fairly simple task. First, it's a good idea to run `gibby_motifFinding -h` to see what options are available. You will notice that Gibby will always require three arguments to be passed: the `PEAK_FILE`, the `PEAK_FILE_TYPE` ("bed" or "homer"), and the `GENOME_FASTA_FILE`. In addition, there are several optional arguments such as `SCORE_THRESHOLD`, `KMER_SIZE`, and `ITERATIONS`. 
+Assuming you have successfully installed Gibby, running the tool is a fairly simple task. First, it's a good idea to run `gibby -h` to see what options are available. You will notice that Gibby will always require three arguments to be passed: the `PEAK_FILE`, the `PEAK_FILE_TYPE` ("bed" or "homer"), and the `GENOME_FASTA_FILE`. In addition, there are several optional arguments such as `SCORE_THRESHOLD`, `KMER_SIZE`, and `ITERATIONS`. 
 
 ### Optional arguments
 `SCORE_THRESHOLD` represents the minimum score that the tool will use to filter out low quality peaks. Generally, if you know the general length of the motif that you are looking for, you can specify `KMER_SIZE` to the general length + 5 (to add some leeway). `ITERATIONS` is the number of times you want to run Gibbs Sampling. Running more iterations results in better detection of motifs in exchange for the increasing time it takes to finish the task. We have set default values for these variables which strike a good balance between speed and performance.
@@ -79,7 +79,7 @@ Please take a look at the "Usage" section above to get a good idea of what the t
 In this case, we have a HOMER peak file. In addition, suppose we want to choose 75 as the score threshold to filter out low-quality peaks. Running the tool would look like this: 
 
 ```
-gibby_motifFinding -p ~/lab5/tagdirs/Oct4/peaks.txt -t homer -g ~/public/genomes/GRCm38.fa -s 75
+gibby -p ~/lab5/tagdirs/Oct4/peaks.txt -t homer -g ~/public/genomes/GRCm38.fa -s 75
 ```
 
 You will want to make sure that you have the correct paths for the peak file and the genome file. Running the command, the tool will take some time to fully run. After finishing, you will want to take a look at the generated motif logo which visualizes which motif was most conserved among the peak regions. In our case, we got: 
