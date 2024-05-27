@@ -31,8 +31,8 @@ In the context of genomic sequences, Gibbs Sampling helps us identify common pat
 
 ### Process for Gibbs Sampling
 
-**The problem we are trying to solve here is:**
-Given 'S' sequences, find the most mutually similar subsequences of length 'k' from each sequence
+**The problem we are trying to solve here is:**\
+Given `S` sequences, find the most mutually similar subsequences of length `k` from each sequence
 
 In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the opimal or somewhere extremely close to the optimum. 
 
