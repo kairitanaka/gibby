@@ -34,6 +34,8 @@ In the context of genomic sequences, Gibbs Sampling helps us identify common pat
 
 More images and text to come explaining gibbs ... 
 
+## TL;DR, A short explanation of Gibbs Sampling
+
 # Features
 
 - Utilize Gibbs sampling to **identify motifs** within the peak regions for a given transcription factor.
