@@ -46,9 +46,7 @@ More images and text to come explaining gibbs ...
 You can install the package via pip:
 
 ```
-pip install git+https://github.com/kairitanaka/CSE_185_finalProject.git
-```
-To check if installation was successful, run:
+pip install git+https://github.com/kairitanaka/gibby.git
 ```
 gibby -h
 ```
