@@ -6,7 +6,7 @@
 - [Output](#output)
 - [Visuals](#visuals)
 - [What is Gibbs Sampling?](#what-is-gibbs-sampling)
-- [TL;DR: a short explanation of Gibbs Sampling](#TL;DR: A short explanation of Gibbs Sampling)
+- [TL;DR: A short explanation of Gibbs Sampling](#tldr-a-short-explanation-of-gibbs-sampling)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
