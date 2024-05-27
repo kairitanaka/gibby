@@ -9,6 +9,8 @@ from tqdm.auto import tqdm
 import threading
 import time
 import sys
+from termcolor import colored
+from pyfiglet import Figlet
 
 # Custom error class to handle exceptions
 class CustomError(Exception):
@@ -279,17 +281,20 @@ def main():
     pfm = GetPFM(foo)
     print("Writing position frequency matrix to PFM.txt...")
     write_matrix_to_file(pfm, 'PFM.txt')
-    print("Done! \n")
+    log_message(colored("Done writing PFM. \n", 'green'))
     pwm = GetPWM(foo)
     print("Writing position weight matrix to PWM.txt...")
     write_matrix_to_file(pwm, 'PWM.txt')
-    print("Done! \n")
+    log_message(colored("Done writing PWM. \n", 'green'))
     print("Generating motif logo...")
     seq_pwm = seqlogo.Pwm(pwm)
     seq_ppm = seqlogo.Ppm(seqlogo.pwm2ppm(seq_pwm))
     seqlogo.seqlogo(seq_ppm, ic_scale=False, format='png', size='large', filename='motif.png')
 
-    print("Successfully loaded and saved motif logo to motif.png\n")
+    log_message(colored("Successfully loaded and saved motif logo to motif.png \n", 'green'))
+
+    completion_banner = Figlet(font='slant').renderText('Task Completed!')
+    print(colored(completion_banner, 'cyan'))
 
 if __name__ == "__main__":
     main()
