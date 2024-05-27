@@ -58,6 +58,13 @@ export PATH=$PATH:$HOME/.local/bin
 ```
 This will allow you to simply type `gibby` to run the tool. You will have to repeat this for every new terminal session.
 
+If you come across the error:
+```
+error: cannot find command 'git'
+```
+Please make sure to download git! Please check [here](https://github.com/git-guides/install-git) for troubleshooting. 
+
+
 # Usage
 
 `gibby`, from Gibby (ver 0.1.0), utilizes Gibbs Sampling to find potential motifs that are in peak regions of the genome. The potential motifs are used to generate a position frequency matrix (PFM), a position weight matrix (PWM), and a motif logo based on these matrices. The options appear as below:
