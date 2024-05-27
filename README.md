@@ -62,9 +62,9 @@ This will allow you to simply type `gibby` to run the tool. You will have to rep
 
 If you come across the error:
 
+
 ```
 error: cannot find command 'git'
-```
 ```
 Please make sure to install Git. You can find installation instructions [here](https://github.com/git-guides/install-git).
 
