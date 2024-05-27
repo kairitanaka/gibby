@@ -289,7 +289,7 @@ def main():
     seq_ppm = seqlogo.Ppm(seqlogo.pwm2ppm(seq_pwm))
     seqlogo.seqlogo(seq_ppm, ic_scale=False, format='png', size='large', filename='motif.png')
 
-    print("Successfully loaded and saved motif logo to output_logo.png\n")
+    print("Successfully loaded and saved motif logo to motif.png\n")
 
 if __name__ == "__main__":
     main()
