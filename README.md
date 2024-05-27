@@ -6,6 +6,7 @@
 - [Output](#output)
 - [Visuals](#visuals)
 - [What is Gibbs Sampling?](#what-is-gibbs-sampling)
+- [TL;DR: a short explanation of Gibbs Sampling](#TL;DR: A short explanation of Gibbs Sampling)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -34,7 +35,7 @@ In the context of genomic sequences, Gibbs Sampling helps us identify common pat
 
 More images and text to come explaining gibbs ... 
 
-## TL;DR, A short explanation of Gibbs Sampling
+## TL;DR: A short explanation of Gibbs Sampling
 
 # Features
 
