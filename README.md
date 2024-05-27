@@ -38,6 +38,8 @@ Given 'S' sequences, find the most mutually similar subsequences of length 'k' f
 
 # TL;DR: A short explanation of Gibbs Sampling
 
+Watch this [video](https://www.youtube.com/watch?v=MP6O_Z2AUDU) from our beloved professor from UCSD Dr.Pavel 
+
 # Features
 
 - Utilize Gibbs sampling to **identify motifs** within the peak regions for a given transcription factor.
