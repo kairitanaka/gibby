@@ -140,22 +140,23 @@ gibby -p ENCFF664TYB.bed -t bed -g hg38.fa
 Again, make sure the paths to the files are correct. Below we share the motif result we got, and the published motif for ZNF24. Gibby can return the motif and sometimes its reverse complement due to its stochasticity. 
 
 #### Gibby Results:
-Forward
+Forward:
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/3628e112-6fe1-4e91-8901-4de2bae589cf)>
 </p>
 
-Reverse Complement
+Reverse Complement:
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/352455f1-9ef7-462e-a0a8-a016c4057ea8)>
 </p>
 
 #### Published motif:
-Forward
+Forward:
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/ea6efb5b-c0f8-4c88-b1b5-67394f5e8f5a)>
 </p>
-Reverse Complement
+Reverse Complement:
+
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/9c680cd2-17a5-47d4-a18b-44628ab7e04b>
 </p>
