@@ -155,8 +155,8 @@ Forward:
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/ea6efb5b-c0f8-4c88-b1b5-67394f5e8f5a)>
 </p>
-Reverse Complement:
 
+Reverse Complement:
 <p align="center">
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/9c680cd2-17a5-47d4-a18b-44628ab7e04b>
 </p>
