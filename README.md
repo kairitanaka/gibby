@@ -164,4 +164,6 @@ Reverse Complement:
 </p>
 
 ## That's it! Hopefully they look similar!
+## Authors 
+Joe Hwang (j8hwang@ucsd.edu) & Kairi Tanaka (ktanaka@ucsd.edu)
 
