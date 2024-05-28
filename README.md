@@ -130,6 +130,8 @@ Reverse complement:
 <img src=https://github.com/kairitanaka/gibby/assets/86521451/4daf935c-9153-45e5-9bf7-a1814e91964a)>
 </p>
 
+Feel free to test the tool with the other two transcription factors (KLF4 and SOX2) used in Lab 5. Since they use the same genome assembly, you just need to change the HOMER peak file!
+
 ## ZNF24
 In this example, we will be using a ChIP-seq dataset that is for the transcription factor ZNF24. The bed file we used is from ENCODE: `https://www.encodeproject.org/files/ENCFF664TYB/`. The GRCh38 genome assembly can be downloaded from the UCSC Genome Browser: `https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/`. 
 
