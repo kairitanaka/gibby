@@ -1,6 +1,6 @@
 # Gibby (ver 0.1.0)
 
-`Gibby` is a Python package designed to process genomic data, extract peak sequences, compute positional frequency and weight matrices (PFMs, PWMs), and compare scores based on the PWM in order to converge on the best motif. This tool is particularly for motif finding.
+`Gibby` is a Python package designed to find the motif of a transcription factor based on ChIP-seq data. The tool processes genomic data, extracts peak sequences, computes positional frequency and weight matrices (PFMs, PWMs), and compares scores based on the PWM in order to converge on the best motif.
 
 - [What's the input?](#input)
 - [What's the output?](#output)
