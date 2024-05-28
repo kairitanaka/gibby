@@ -118,16 +118,47 @@ and sometimes its reverse complement:
 <img src=https://github.com/kairitanaka/CSE_185_finalProject/assets/86521451/bd12cc26-be4a-4e9e-aa6b-d68610c6b8e1)>
 </p>
 
-Since Gibbs Sampling is stochastic process, your graphs will look somewhat different from our results. However, what *should* be similar are the large letters (nucleotides) stacked at the top and their relative positioning to one another. These large sets of letters represent the motif that Gibby discovered; all the other smaller nucleotides represent "noise" or nucleotides that were not as strongly conserved among peak regions for OCT4. 
+Since Gibbs Sampling is a stochastic process, your graphs will look different from our results. However, what *should* be similar are the large letters (nucleotides) stacked at the top and their relative positioning to one another. These large sets of letters represent the motif that Gibby discovered; all the other smaller nucleotides represent "noise" or nucleotides that were not as strongly conserved among peak regions for OCT4. You may get the motif or its reverse complement. 
+
 Compare your results with the published motifs for OCT4: 
 <p align="center">
-<img src=https://github.com/kairitanaka/CSE_185_finalProject/assets/86521451/25dfae39-3832-48bf-870c-ab0cf8f3e20d)>
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/af7635bd-5fdc-4d41-8594-a5e0b9108157)>
 </p>
 
 Reverse complement:
 <p align="center">
-<img src=https://github.com/kairitanaka/CSE_185_finalProject/assets/86521451/b3eacbfa-9f2c-42e6-9041-ac2ee53c9f54)>
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/4daf935c-9153-45e5-9bf7-a1814e91964a)>
 </p>
 
-# That's it! Hopefully they look relatively similar!
+## ZNF24
+In this example, we will be using a ChIP-seq dataset that is for the transcription factor ZNF24. The bed file we used is from ENCODE: `https://www.encodeproject.org/files/ENCFF664TYB/`. The GRCh38 genome assembly can be downloaded from the UCSC Genome Browser: `https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/`. 
+
+Since we are using a `.bed` peak file, we can configure the argument accordingly and use default settings for the other arguments:
+```
+gibby -p ENCFF664TYB.bed -t bed -g hg38.fa
+```
+Again, make sure the paths to the files are correct. Below we share the motif result we got, and the published motif for ZNF24. Gibby can return the motif and sometimes its reverse complement due to its stochasticity. 
+
+#### Gibby Results:
+Forward
+<p align="center">
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/3628e112-6fe1-4e91-8901-4de2bae589cf)>
+</p>
+
+Reverse Complement
+<p align="center">
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/352455f1-9ef7-462e-a0a8-a016c4057ea8)>
+</p>
+
+#### Published motif:
+Forward
+<p align="center">
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/ea6efb5b-c0f8-4c88-b1b5-67394f5e8f5a)>
+</p>
+Reverse Complement
+<p align="center">
+<img src=https://github.com/kairitanaka/gibby/assets/86521451/9c680cd2-17a5-47d4-a18b-44628ab7e04b>
+</p>
+
+## That's it! Hopefully they look similar!
 
