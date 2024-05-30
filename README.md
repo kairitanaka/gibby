@@ -1,4 +1,9 @@
-# Gibby (ver 0.1.0)
+![Python Version](https://img.shields.io/badge/python-%3E%3D3.6-red)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Open Issues](https://img.shields.io/github/issues/kairitanaka/gibby?color=yellow)
+![Contributors](https://img.shields.io/github/contributors/kairitanaka/gibby?color=green)
+
+# Gibby (v0.1.0)
 
 `Gibby` is a Python package designed to find the motif of a transcription factor de novo based on ChIP-seq data. Given a genome and peak file, the tool extracts sequences from the genome based on the peak file, and runs Gibbs Sampling on those peak sequences. During the sampling process, kmers across the peak sequences are compared and scored. The output of Gibbs sampling is a list potential motifs of length k; the position frequency and position weight matrices of these potential motifs are created and saved as a text file. The position weight matrix is visualized using seqLogo to observe which motif was most strongly conserved among the peak regions of the transcription factor. 
 
