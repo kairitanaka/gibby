@@ -21,15 +21,15 @@ Three files are generated: `PFM.txt`, `PWM.txt`, and `motif.png`. These files in
 <img src=https://github.com/kairitanaka/CSE_185_finalProject/assets/86521451/f60bc209-1975-4fe0-9844-40f2f0de3f25)>
 </p>
 
-## What is Gibbs Sampling?
+# What is Gibbs Sampling?
 Gibbs Sampling is a statistical method used to estimate the distribution of variables when direct sampling is difficult. It is particularly useful in motif finding where we want to identify common patterns (motifs) in a set of sequences. 
 
-### For example ...
+## For example ...
 Imagine you are trying to perfect a secret recipe, but you don't have all the ingredients at once. You start by randomly choosing some ingredients and proportions, then you taste the result. Based on how good or bad it tastes, you keep some ingredients, change others, and try again. Each iteration helps you understand what works and what doesn't, gradually leading you to the best recipe.
 
 In the context of genomic sequences, Gibbs Sampling helps us identify common patterns (motifs) by iteratively refining our guesses based on the sequences we have. Each iteration, which involves some randomness, helps to gradually reveal the underlying motifs more accurately.
 
-### Process for Gibbs Sampling
+## Process for Gibbs Sampling
 
 **The problem we are trying to solve here is:**\
 Given `S` sequences, find the most mutually similar subsequences of length `k` from each sequence
@@ -38,7 +38,7 @@ In order to tackle this problem it is crucial to look at the entire statistical 
 
 more coming ... 
 
-### TL;DR: A short explanation of Gibbs Sampling
+## TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
 
 Another resource you can use is this [video](https://www.youtube.com/watch?v=MP6O_Z2AUDU) from our beloved professor from UCSD,  Dr.Pavel. 
