@@ -38,7 +38,7 @@ In order to tackle this problem it is crucial to look at the entire statistical 
 
 more coming ... 
 
-# TL;DR: A short explanation of Gibbs Sampling
+### TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
 
 Another resource you can use is this [video](https://www.youtube.com/watch?v=MP6O_Z2AUDU) from our beloved professor from UCSD,  Dr.Pavel. 
