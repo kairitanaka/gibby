@@ -44,7 +44,11 @@ In order to tackle this problem it is crucial to look at the entire statistical 
 Randomly choose a starting position for the subsequence of length `k` in each of the `S` sequences.
 For each iteration, leave out one sequence, say sequence `s'`.
 
-![image](https://github.com/kairitanaka/gibby/assets/64274901/b48c225e-da4e-4d6a-b274-aaf5bd5ce36f)
+<p align="center">
+  <img src=https://github.com/kairitanaka/gibby/assets/64274901/b48c225e-da4e-4d6a-b274-aaf5bd5ce36f width="60%" alt="Image 1 Description">
+</p>
+
+
 
 
 Using the remaining `S-1` sequences, build a position-specific scoring matrix (PSSM) or profile matrix. This matrix represents the frequency of each nucleotide at each position of the subsequence. USE PSEUDOCOUNTS!!!
