@@ -72,7 +72,7 @@ Sample a new position for the subsequence in sequence `s'` according to the prob
 REPEAT!!
 We have seen that in around 500 - 1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
 
-Reference: ![bioinformatics algorithms an active learning approach](https://www.bioinformaticsalgorithms.org/) and BIMM 181
+Reference: [bioinformatics algorithms an active learning approach](https://www.bioinformaticsalgorithms.org/) and BIMM 181
 
 ## TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
