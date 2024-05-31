@@ -42,15 +42,26 @@ Given `S` sequences, find the most mutually similar subsequences of length `k` f
 In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the optimal or somewhere extremely close to the optimum. 
 
 Randomly choose a starting position for the subsequence of length `k` in each of the `S` sequences.
-
 For each iteration, leave out one sequence, say sequence `s'`.
 
-Using the remaining `S-1` sequences, build a position-specific scoring matrix (PSSM) or profile matrix. This matrix represents the frequency of each nucleotide at each position of the subsequence.
+![image](https://github.com/kairitanaka/gibby/assets/64274901/b48c225e-da4e-4d6a-b274-aaf5bd5ce36f)
+
+
+Using the remaining `S-1` sequences, build a position-specific scoring matrix (PSSM) or profile matrix. This matrix represents the frequency of each nucleotide at each position of the subsequence. USE PSEUDOCOUNTS!!!
+
+![image](https://github.com/kairitanaka/gibby/assets/64274901/87bd1dbc-7069-4840-9144-a51a5f151936)
+
 
 Calculate the probability of every possible subsequence of length `k` in the left-out sequence `s'` using the profile matrix. This involves calculating the likelihood of the subsequence given the profile and normalizing it to get a probability distribution.
 
+![image](https://github.com/kairitanaka/gibby/assets/64274901/b9a044a8-b4fb-489e-bc7c-2c7bf0359d9e)
+
+
 Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new position replaces the old position for sequence `s'`.
 
+![image](https://github.com/kairitanaka/gibby/assets/64274901/89a325c2-edde-4aba-b040-c2224206c672)
+
+REPEAT!!
 We have seen that in around 500 - 1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
 
 ## TL;DR: A short explanation of Gibbs Sampling
