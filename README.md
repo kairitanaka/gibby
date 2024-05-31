@@ -51,7 +51,7 @@ Calculate the probability of every possible subsequence of length `k` in the lef
 
 Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new position replaces the old position for sequence `s'`.
 
-We have seen that in around 500~1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
+We have seen that in around 500 - 1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
 
 ## TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
