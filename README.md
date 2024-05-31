@@ -39,9 +39,19 @@ In the context of genomic sequences, Gibbs Sampling helps us identify common pat
 **The problem we are trying to solve here is:**\
 Given `S` sequences, find the most mutually similar subsequences of length `k` from each sequence
 
-In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the opimal or somewhere extremely close to the optimum. 
+In order to tackle this problem it is crucial to look at the entire statistical landscape by sampling every single sequence and seeing if we can converge to a minima that is the optimal or somewhere extremely close to the optimum. 
 
-more coming ... 
+Randomly choose a starting position for the subsequence of length `k` in each of the `S` sequences.
+
+For each iteration, leave out one sequence, say sequence `s'`.
+
+Using the remaining `S-1` sequences, build a position-specific scoring matrix (PSSM) or profile matrix. This matrix represents the frequency of each nucleotide at each position of the subsequence.
+
+Calculate the probability of every possible subsequence of length `k` in the left-out sequence `s'` using the profile matrix. This involves calculating the likelihood of the subsequence given the profile and normalizing it to get a probability distribution.
+
+Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new position replaces the old position for sequence `s'`.
+
+We have seen that in around 500~1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
 
 ## TL;DR: A short explanation of Gibbs Sampling
 Steps for Gibbs Sampling:
