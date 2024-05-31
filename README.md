@@ -10,7 +10,6 @@
 - [What's the input?](#input)
 - [What's the output?](#output)
 - [What is Gibbs Sampling?](#what-is-gibbs-sampling)
-- [TL;DR: A short explanation of Gibbs Sampling](#tldr-a-short-explanation-of-gibbs-sampling)
 - [All Features](#features)
 - [How do I install Gibby?](#installation)
 - [How do I use Gibby?](#usage)
