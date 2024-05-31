@@ -45,25 +45,29 @@ Randomly choose a starting position for the subsequence of length `k` in each of
 For each iteration, leave out one sequence, say sequence `s'`.
 
 <p align="center">
-  <img src=https://github.com/kairitanaka/gibby/assets/64274901/b48c225e-da4e-4d6a-b274-aaf5bd5ce36f width="60%" alt="Image 1 Description">
+  <img src=https://github.com/kairitanaka/gibby/assets/64274901/b48c225e-da4e-4d6a-b274-aaf5bd5ce36f width="50%" alt="Image 1 Description">
 </p>
-
-
-
 
 Using the remaining `S-1` sequences, build a position-specific scoring matrix (PSSM) or profile matrix. This matrix represents the frequency of each nucleotide at each position of the subsequence. USE PSEUDOCOUNTS!!!
 
-![image](https://github.com/kairitanaka/gibby/assets/64274901/87bd1dbc-7069-4840-9144-a51a5f151936)
+<p align="center">
+  <img src=https://github.com/kairitanaka/gibby/assets/64274901/87bd1dbc-7069-4840-9144-a51a5f151936 width="50%" alt="Image 1 Description">
+</p>
 
 
 Calculate the probability of every possible subsequence of length `k` in the left-out sequence `s'` using the profile matrix. This involves calculating the likelihood of the subsequence given the profile and normalizing it to get a probability distribution.
 
-![image](https://github.com/kairitanaka/gibby/assets/64274901/b9a044a8-b4fb-489e-bc7c-2c7bf0359d9e)
-
+<p align="center">
+  <img src=https://github.com/kairitanaka/gibby/assets/64274901/b9a044a8-b4fb-489e-bc7c-2c7bf0359d9e width="50%" alt="Image 1 Description">
+</p>
 
 Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new position replaces the old position for sequence `s'`.
 
-![image](https://github.com/kairitanaka/gibby/assets/64274901/89a325c2-edde-4aba-b040-c2224206c672)
+
+<p align="center">
+  <img src=https://github.com/kairitanaka/gibby/assets/64274901/89a325c2-edde-4aba-b040-c2224206c672 width="50%" alt="Image 1 Description">
+</p>
+
 
 REPEAT!!
 We have seen that in around 500 - 1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
