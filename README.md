@@ -62,7 +62,7 @@ Calculate the probability of every possible subsequence of length `k` in the lef
 
 $$Random(\frac{2}{8^4}, \frac{2}{8^4}, \frac{72}{8^4}, \frac{24}{8^4}, \frac{8}{8^4},\frac{4}{8^4}, \frac{1}{8^4}) = Random(\frac{2}{113},\frac{2}{113},\frac{72}{113},\frac{24}{113},\frac{8}{113},\frac{4}{113},\frac{1}{113})$$
 
-Sample a new motif for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new motif replaces the old position for sequence `s'`.
+Sample a new motif for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new motif replaces the old position for sequence `s'`. In this case we chose ACCT. 
 
 <p align="center">
   <img src=https://github.com/kairitanaka/gibby/assets/64274901/89a325c2-edde-4aba-b040-c2224206c672 width="50%" alt="Image 1 Description">
