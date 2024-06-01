@@ -60,8 +60,7 @@ Calculate the probability of every possible subsequence of length `k` in the lef
   <img src=https://github.com/kairitanaka/gibby/assets/64274901/b9a044a8-b4fb-489e-bc7c-2c7bf0359d9e width="50%" alt="Image 1 Description">
 </p>
 
-Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. This new position replaces the old position for sequence `s'`.
-
+Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. So fot example the new This new position replaces the old position for sequence `s'`.
 
 <p align="center">
   <img src=https://github.com/kairitanaka/gibby/assets/64274901/89a325c2-edde-4aba-b040-c2224206c672 width="50%" alt="Image 1 Description">
