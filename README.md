@@ -60,7 +60,7 @@ Calculate the probability of every possible subsequence of length `k` in the lef
   <img src=https://github.com/kairitanaka/gibby/assets/64274901/b9a044a8-b4fb-489e-bc7c-2c7bf0359d9e width="50%" alt="Image 1 Description">
 </p>
 
-$Random(2^4)
+$$Random(/frac{2}{8^4}, /frac{2}{8^4}, /frac{72}{8^4}, /frac{24}{8^4}, /frac{8}{8^4},/frac{4}{8^4}, /frac{1}{8^4} )$$
 
 Sample a new position for the subsequence in sequence `s'` according to the probability distribution obtained in the previous step. So fot example the new This new position replaces the old position for sequence `s'`.
 
