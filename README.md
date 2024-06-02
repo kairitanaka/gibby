@@ -69,7 +69,8 @@ Sample a new position for the subsequence in sequence `s'` according to the prob
 </p>
 
 
-REPEAT!!
+After this we will score the motifs. If the score is better than previous iteration we will keep those set of motifs so that we are always progressing in the correct direction. Then we will repeat for multiple iterations!
+
 We have seen that in around 500 - 1000 iterations the positions of the subsequences have stabilized across iterations. However, this may take some testing over 2~5 runs based on your dataset. 
 
 Reference: [bioinformatics algorithms an active learning approach](https://www.bioinformaticsalgorithms.org/) and BIMM 181
