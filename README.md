@@ -12,7 +12,8 @@
 - [What is Gibbs Sampling?](#what-is-gibbs-sampling)
 - [All Features](#features)
 - [How do I install Gibby?](#installation)
-- [How do I use Gibby?](#usage)
+- [I'm getting errors! What do I do?](#troubleshooting)
+- [How do I use Gibby?](#basic-usage)
 - [Examples](#examples)
 
 ## Input 
@@ -108,6 +109,22 @@ error: cannot find command 'git'
 ```
 Please make sure to install Git. You can find installation instructions [here](https://github.com/git-guides/install-git).
 
+# Troubleshooting
+
+While running the tool, you may come across the error:
+```
+OSError: Could not find Ghostscript on path. There should be either a gs executable or a gswin32c.exe on your system's path
+```
+We have observed that this error occurs for some users but not for others. Ghostscript is an application that the seqLogo package requires as part of its process in visualizing the motif; some systems appear to already have Ghostscript installed, while others do not. If on Windows, please install Ghostscript from their [website](https://www.ghostscript.com/releases/gsdnld.html) (we used Ghostscript 10.03.1 for Windows (64 bit), AGPL Release). On macOS, you can use Homebrew to install the application:
+```
+brew install ghostscript
+```
+For Linux, you can use: 
+```
+sudo apt-get update
+sudo apt-get install ghostscript
+```
+If you're receiving other errors, please feel free to report them on **Issues**!
 
 # Basic Usage
 
