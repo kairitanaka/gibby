@@ -1,0 +1,128 @@
+Arguments ok
+Starting Bed2Fasta
+bed2fasta -o ENCFF664TYB.bed.fa ENCFF664TYB.bed /data/apache-tomcat/instance/meme/work/meme-data/fasta_databases/UCSCMammal/hg38.fna
+Bed2Fasta ran successfully in 0.07 seconds
+Starting MEME-ChIP
+meme-chip -oc . -time 240 -ccut 100 -dna -order 2 -minw 6 -maxw 15 -db db/motif_databases/HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme -meme-mod zoops -meme-nmotifs 3 -meme-searchsize 100000 -streme-pvt 0.05 -streme-align center -streme-totallength 4000000 -centrimo-score 5.0 -centrimo-ethresh 10.0 ENCFF664TYB.bed.fa
+MEME-ChIP is starting subprocess getsize
+getsize ./ENCFF664TYB.bed.fa 1> $metrics
+MEME-ChIP subprocess getsize ran successfully in 0.1 seconds
+MEME-ChIP is starting subprocess fasta-most
+fasta-most -min 50 < ./ENCFF664TYB.bed.fa 1> $metrics
+MEME-ChIP subprocess fasta-most ran successfully in 0.1 seconds
+MEME-ChIP is starting subprocess fasta-center
+fasta-center -dna -len 100 < ./ENCFF664TYB.bed.fa 1> ./seqs-centered
+MEME-ChIP subprocess fasta-center ran successfully in 0.2 seconds
+MEME-ChIP is starting subprocess fasta-get-markov
+fasta-get-markov -nostatus -nosummary -dna -m 2 ./ENCFF664TYB.bed.fa ./background
+MEME-ChIP subprocess fasta-get-markov ran successfully in 0.0 seconds
+MEME-ChIP is starting subprocess meme
+meme ./seqs-centered -oc meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile ./background -dna -seed 0 -searchsize 100000 -time 2919 -revcomp -nostatus
+MEME-ChIP subprocess meme ran successfully in 1009.6 seconds
+MEME-ChIP is starting subprocess streme
+streme --verbosity 1 --oc streme_out -dna --seed 0 --p ./seqs-centered --minw 6 --maxw 15 --time 5761 --order 2 --thresh 0.05 --align center --totallength 4000000
+MEME-ChIP subprocess streme ran successfully in 960.8 seconds
+MEME-ChIP is starting subprocess centrimo
+centrimo -seqlen 340 -verbosity 1 -oc centrimo_out -bfile ./background -score 5.0 -ethresh 10.0 ./ENCFF664TYB.bed.fa meme_out/meme.xml streme_out/streme.xml db/motif_databases/HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme
+MEME-ChIP subprocess centrimo ran successfully in 48.4 seconds
+MEME-ChIP is starting subprocess tomtom
+tomtom -verbosity 1 -oc meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc meme_out/meme.xml db/motif_databases/HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme
+MEME-ChIP subprocess tomtom ran successfully in 2.1 seconds
+MEME-ChIP is starting subprocess tomtom
+tomtom -verbosity 1 -oc streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc streme_out/streme.xml db/motif_databases/HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme
+MEME-ChIP subprocess tomtom ran successfully in 18.0 seconds
+MEME-ChIP is starting subprocess tomtom
+tomtom -verbosity 1 -text -thresh 0.1 ./combined.meme ./combined.meme 1> ./motif_alignment.txt
+MEME-ChIP subprocess tomtom ran successfully in 8.5 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_1 -bgfile ./background -keepprimary -primary 1-GAATRAATGAA ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 5.4 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_2 -bgfile ./background -keepprimary -primary GGSGGCGGCGGCGSG ./ENCFF664TYB.bed.fa meme_out/meme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 7.0 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_3 -bgfile ./background -keepprimary -primary 3-CASYAGRKGGC ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 1.3 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_4 -bgfile ./background -keepprimary -primary 2-GGAASTGAAASH ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 3.0 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_5 -bgfile ./background -keepprimary -primary 7-ATGASTCAT ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 1.6 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_6 -bgfile ./background -keepprimary -primary 5-WAACCACAR ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 3.2 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_7 -bgfile ./background -keepprimary -primary 4-AASAGGAAGTR ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 3.6 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_8 -bgfile ./background -keepprimary -primary 8-RCTCARTAAATATT ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 1.1 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_9 -bgfile ./background -keepprimary -primary 6-GGGTTCGARWCC ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 0.6 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_10 -bgfile ./background -keepprimary -primary 9-AGCCTGGSCAACAK ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 0.6 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_11 -bgfile ./background -keepprimary -primary 10-GCCTGTAATCCCAGC ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 0.4 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_12 -bgfile ./background -keepprimary -primary 11-CCCCDCCCC ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 1.8 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_13 -bgfile ./background -keepprimary -primary 12-CCTCRGCCTCCCAA ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 0.7 seconds
+MEME-ChIP is starting subprocess spamo
+spamo -verbosity 1 -oc spamo_out_14 -bgfile ./background -keepprimary -primary 14-CTCAAGTGATCCDCC ./ENCFF664TYB.bed.fa streme_out/streme.xml meme_out/meme.xml streme_out/streme.xml
+MEME-ChIP subprocess spamo ran successfully in 0.5 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_1 --bgfile ./background --motif 1-GAATRAATGAA streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.9 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_2 --bgfile ./background --motif GGSGGCGGCGGCGSG meme_out/meme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.9 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_3 --bgfile ./background --motif 3-CASYAGRKGGC streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_4 --bgfile ./background --motif 2-GGAASTGAAASH streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_5 --bgfile ./background --motif 7-ATGASTCAT streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.7 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_6 --bgfile ./background --motif 5-WAACCACAR streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_7 --bgfile ./background --motif 4-AASAGGAAGTR streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_8 --bgfile ./background --motif 8-RCTCARTAAATATT streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_9 --bgfile ./background --motif 6-GGGTTCGARWCC streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_10 --bgfile ./background --motif 9-AGCCTGGSCAACAK streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_11 --bgfile ./background --motif 10-GCCTGTAATCCCAGC streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_12 --bgfile ./background --motif 11-CCCCDCCCC streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_13 --bgfile ./background --motif 12-CCTCRGCCTCCCAA streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess fimo
+fimo --verbosity 1 --oc fimo_out_14 --bgfile ./background --motif 14-CTCAAGTGATCCDCC streme_out/streme.xml ./ENCFF664TYB.bed.fa
+MEME-ChIP subprocess fimo ran successfully in 3.8 seconds
+MEME-ChIP is starting subprocess meme-chip_html_to_tsv
+meme-chip_html_to_tsv ./meme-chip.html ./summary.tsv "meme-chip -oc . -time 240 -ccut 100 -dna -order 2 -minw 6 -maxw 15 -db db/motif_databases/HUMAN/HOCOMOCOv11_core_HUMAN_mono_meme_format.meme -meme-mod zoops -meme-nmotifs 3 -meme-searchsize 100000 -streme-pvt 0.05 -streme-align center -streme-totallength 4000000 -centrimo-score 5.0 -centrimo-ethresh 10.0 ENCFF664TYB.bed.fa" 5.5.5 "Thu Sep 14 08\:48\:04 2023 +1000"
+MEME-ChIP subprocess meme-chip_html_to_tsv ran successfully in 0.3 seconds
+MEME-ChIP ran successfully in 2136.69 seconds
+Starting Tar
+tar -czf appMEMECHIP_5.5.51717289802740-2093843272.tar.gz -C /data/apache-tomcat/instance/meme/webapps/opal-jobs appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_1/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/centrimo_out/site_counts.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/motif_alignment.txt appMEMECHIP_5.5.51717289802740-2093843272/centrimo_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_4/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/spamo5_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_6/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_12/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo1.eps appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo3.png appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/streme_tomtom_out/tomtom.tsv appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_14/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_1/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_4/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_10/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_6/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_11/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo2.png appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_9/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo2.eps appMEMECHIP_5.5.51717289802740-2093843272/ENCFF664TYB.bed.fa appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/spamo2_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_5/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_7/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/combined.meme appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/summary.tsv appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_3/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/spamo8_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo7_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_12/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo3.eps appMEMECHIP_5.5.51717289802740-2093843272/spamo13_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_3/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/streme_tomtom_out/tomtom.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/progress_log.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/spamo6_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_13/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo11_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc1.eps appMEMECHIP_5.5.51717289802740-2093843272/spamo10_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/streme_out/sequences.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/meme.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/count_seqs_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_5/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_9/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_10/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_2/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_7/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo3_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/spamo9_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/meme_tomtom_out/tomtom.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc3.eps appMEMECHIP_5.5.51717289802740-2093843272/streme_out/sites.tsv appMEMECHIP_5.5.51717289802740-2093843272/streme_out/streme.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/meme_out/meme.xml appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo1.png appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_13/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/streme_out/streme.xml appMEMECHIP_5.5.51717289802740-2093843272/streme_tomtom_out/tomtom.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_8/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_8/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_3/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/streme_out/streme.txt appMEMECHIP_5.5.51717289802740-2093843272/seqs-centered appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_8/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_14/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/streme_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_2/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/background appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/fimo.gff appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_11/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_9/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc3.png appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_13/spamo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/spamo12_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_1/cisml.xml appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_5/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_12/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme-chip.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_2/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/spamo1_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_10/fimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/spamo14_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc1.png appMEMECHIP_5.5.51717289802740-2093843272/messages.txt appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_11/fimo.html appMEMECHIP_5.5.51717289802740-2093843272/centrimo_out/centrimo.tsv appMEMECHIP_5.5.51717289802740-2093843272/centrimo_out/centrimo.html appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_7/best_site.narrowPeak appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_6/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/meme_tomtom_out/tomtom.tsv appMEMECHIP_5.5.51717289802740-2093843272/fimo_out_4/fimo.xml appMEMECHIP_5.5.51717289802740-2093843272/spamo_out_14/spamo.tsv appMEMECHIP_5.5.51717289802740-2093843272/meme_tomtom_out/tomtom.xml appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc2.eps appMEMECHIP_5.5.51717289802740-2093843272/meme_out/logo_rc2.png appMEMECHIP_5.5.51717289802740-2093843272/spamo4_msgs.txt appMEMECHIP_5.5.51717289802740-2093843272/meme_out/meme.html appMEMECHIP_5.5.51717289802740-2093843272/ENCFF664TYB.bed
+Tar ran successfully in 3.18 seconds
+Done
